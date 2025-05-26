@@ -21,25 +21,3 @@
      }
 }
 
-void first_pixel(char *source_path)
-{
-    unsigned char *data;
-    int width, height, channels;
-
-    if (read_image_data(source_path, &data, &width, &height, &channels))
-    {
-        if (channels < 3) {
-            printf("Erreur : l'image ne contient pas assez de canaux pour du RGB\n");
-            return;
-        }
-
-        /* data[0] = R, data[1] = G, data[2] = B */
-        printf("first_pixel: %d, %d, %d\n", data[0], data[1], data[2]);
-
-        free(data);
-    }
-    else
-    {
-        printf("Erreur : impossible de lire l'image à %s\n", source_path);
-    }
-}
