@@ -1,0 +1,12 @@
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c: In function ‘first_pixel’:
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c:39:9: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+   39 |         free(data);
+      |         ^~~~
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+    5 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+    6 | 
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c:39:9: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   39 |         free(data);
+      |         ^~~~
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c:39:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
