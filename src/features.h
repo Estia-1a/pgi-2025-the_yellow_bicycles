@@ -5,5 +5,3 @@
 void helloWorld();
 
 #endif
-
-void dimension (char *source_path);
