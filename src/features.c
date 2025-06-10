@@ -51,6 +51,8 @@ void tenth_pixel(char *source_path)
     read_image_data(source_path, &data, &width, &height, &channels);
     printf("second_line: %d, %d, %d\n", data[3*width], data[3*width+1], data[3*width+2]);
     }
+
+
 void max_pixel(char *source_path){
     unsigned char *data, r, g, b, maxr, maxg, maxb;
     int width, height, channels, sum, maxsum=-1,maxx, maxy;
@@ -74,4 +76,29 @@ void max_pixel(char *source_path){
     }
 }
     printf("max_pixel (%d, %d): %d, %d, %d\n", maxx, maxy, maxr, maxg, maxb);
+}
+
+void min_pixel(char *source_path){
+    unsigned char *data, r, g, b, minr, ming, minb;
+    int width, height, channels, sum, minsum=256*3+1, minx, miny;
+    read_image_data(source_path, &data, &width, &height, &channels);
+        for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int idx = (y * width + x) * channels;
+        r = data[idx];
+        g = data[idx+1];
+        b = data[idx+2];
+        sum= r + g + b;
+        if (sum<minsum){
+            minsum=sum;
+            minx=x;
+            miny=y;
+            minr=r;
+            ming=g;
+            minb=b;
+            
+        }
+    }
+}
+    printf("min_pixel (%d, %d): %d, %d, %d\n", minx, miny, minr, ming, minb);
 }

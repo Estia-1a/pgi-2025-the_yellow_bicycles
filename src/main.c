@@ -38,19 +38,19 @@ if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
     tenth_pixel( configuration.filenames[0] );
 }
 
-return 0;
 
 if ( strncmp( configuration.command, "second_line", 12 ) == 0 ) {
     second_line(configuration.filenames[0] );
 }
+
 if ( strncmp( configuration.command, "max_pixel", 13 ) == 0 ) {
     max_pixel(configuration.filenames[0] );
 }
 
-  /*
-   * TO COMPLETE
-   */
-  
+if ( strncmp( configuration.command, "min_pixel", 14 ) == 0 ) {
+    min_pixel(configuration.filenames[0] );
+}
+
   return 0;
 }
 
