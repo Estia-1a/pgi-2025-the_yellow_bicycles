@@ -25,11 +25,14 @@ void first_pixel(char *source_path)
 {
     unsigned char *data;
     int width, height, channels;
+    read_image_data(source_path, &data, &width, &height, &channels);
+    printf("first_pixel: %d, %d, %d\n", data[0], data[1], data[2]);
+    }
 
-read_image_data(source_path, &data, &width, &height, &channels);
-        /* data[0] = R, data[1] = G, data[2] = B */
-        printf("first_pixel: %d, %d, %d\n", data[0], data[1], data[2]);
-
-        /*free(data);*/
-
+ void second_line(char *source_path)
+ {
+    unsigned char *data;
+    int width, height, channels, i;
+    read_image_data(source_path, &data, &width, &height, &channels);
+    printf("second_line: %d, %d, %d\n", data[3*width], data[3*width+1], data[3*width+2]);
     }
