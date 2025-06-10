@@ -25,6 +25,25 @@ void first_pixel(char *source_path)
 {
     unsigned char *data;
     int width, height, channels;
+
+read_image_data(source_path, &data, &width, &height, &channels);
+        printf("first_pixel: %d, %d, %d\n", data[0], data[1], data[2]);
+
+    }
+
+void tenth_pixel(char *source_path)
+{
+    unsigned char *data;
+    int width, height, channels;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels))
+    {
+        int index = 9 * channels;
+
+        printf("tenth_pixel: %d, %d, %d\n", data[index], data[index + 1], data[index + 2]);
+    }
+}
+
     read_image_data(source_path, &data, &width, &height, &channels);
     printf("first_pixel: %d, %d, %d\n", data[0], data[1], data[2]);
     }
