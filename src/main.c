@@ -40,8 +40,6 @@ else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
 }
 
 else if ( strncmp( configuration.command, "second_line", 12 ) == 0 ) {
-
-if ( strncmp( configuration.command, "second_line", 12 ) == 0 ) {
     second_line(configuration.filenames[0] );
 }
 
