@@ -113,12 +113,11 @@ void stat_report(char *source_path) {
         return;
     }
 
-    // Variables pour max/min pixel
     int maxsum = -1, minsum = 256 * 3 + 1;
     int maxx, maxy, minx, miny;
     unsigned char maxr, maxg, maxb, minr, ming, minb;
 
-    // Variables pour max/min composants R, G, B
+
     unsigned char maxR = 0, maxG = 0, maxB = 0;
     unsigned char minR = 255, minG = 255, minB = 255;
 
@@ -132,7 +131,6 @@ void stat_report(char *source_path) {
 
             int sum = r + g + b;
 
-            // pour max pixel
             if (sum > maxsum) {
                 maxsum = sum;
                 maxx = x;
@@ -142,7 +140,6 @@ void stat_report(char *source_path) {
                 maxb = b;
             }
 
-            // pour min pixel
             if (sum < minsum) {
                 minsum = sum;
                 minx = x;
@@ -152,19 +149,16 @@ void stat_report(char *source_path) {
                 minb = b;
             }
 
-            // pour max composants
             if (r > maxR) maxR = r;
             if (g > maxG) maxG = g;
             if (b > maxB) maxB = b;
 
-            // pour min composants
             if (r < minR) minR = r;
             if (g < minG) minG = g;
             if (b < minB) minB = b;
         }
     }
 
-    // Écriture pour le fichier
     fprintf(f, "max_pixel (%d, %d): %d, %d, %d\n\n", maxx, maxy, maxr, maxg, maxb);
     fprintf(f, "min_pixel (%d, %d): %d, %d, %d\n\n", minx, miny, minr, ming, minb);
     fprintf(f, "max_component R: %d\n", maxR);
