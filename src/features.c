@@ -28,9 +28,6 @@ void first_pixel(char *source_path)
 
 read_image_data(source_path, &data, &width, &height, &channels);
         printf("first_pixel: %d,%d,%d", data[0], data[1], data[2]);
-    read_image_data(source_path, &data, &width, &height, &channels);
-    printf("first_pixel: %d,%d,%d", data[0], data[1], data[2]);
-
     }
 
 
@@ -41,7 +38,6 @@ void tenth_pixel(char *source_path)
 
 read_image_data(source_path, &data, &width, &height, &channels);
         printf("tenth_pixel: %d,%d,%d", data[27], data[28], data[29]);
-        printf("tenth_pixel: %d,%d,%d", data[27], data[28], data[29]);
         free_image_data(data);
 }
 
@@ -51,7 +47,6 @@ read_image_data(source_path, &data, &width, &height, &channels);
     unsigned char *data;
     int width, height, channels;
     read_image_data(source_path, &data, &width, &height, &channels);
-    printf("second_line: %d,%d,%d", data[3*width], data[3*width+1], data[3*width+2]);
     printf("second_line: %d,%d,%d", data[3*width], data[3*width+1], data[3*width+2]);
     }
 
