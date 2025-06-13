@@ -134,66 +134,33 @@ void stat_report(char *source_path) {
     int width, height, channels;
     read_image_data(source_path, &data, &width, &height, &channels);
 
-    FILE *f = fopen("stat_report.txt", "w");
-    if (!f) {
-        printf("Erreur lors de l'ouverture\n");
-        return;
-    }
-
-    int maxsum = -1, minsum = 256 * 3 + 1;
-    int maxx, maxy, minx, miny;
-    unsigned char maxr, maxg, maxb, minr, ming, minb;
-
-
-    unsigned char maxR = 0, maxG = 0, maxB = 0;
-    unsigned char minR = 255, minG = 255, minB = 255;
-
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            int idx = (y * width + x) * channels;
-
-            unsigned char r = data[idx];
-            unsigned char g = data[idx + 1];
-            unsigned char b = data[idx + 2];
-
-            int sum = r + g + b;
-
-            if (sum > maxsum) {
-                maxsum = sum;
-                maxx = x;
-                maxy = y;
-                maxr = r;
-                maxg = g;
-                maxb = b;
-            }
-
-            if (sum < minsum) {
-                minsum = sum;
-                minx = x;
-                miny = y;
-                minr = r;
-                ming = g;
-                minb = b;
-            }
-
-            if (r > maxR) maxR = r;
-            if (g > maxG) maxG = g;
-            if (b > maxB) maxB = b;
-
-            if (r < minR) minR = r;
-            if (g < minG) minG = g;
-            if (b < minB) minB = b;
-        }
-    }
-
-    fprintf(f, "max_pixel (%d, %d): %d, %d, %d\n\n", maxx, maxy, maxr, maxg, maxb);
-    fprintf(f, "min_pixel (%d, %d): %d, %d, %d\n\n", minx, miny, minr, ming, minb);
-    fprintf(f, "max_component R: %d\n", maxR);
-    fprintf(f, "max_component G: %d\n", maxG);
-    fprintf(f, "max_component B: %d\n\n", maxB);
-    fprintf(f, "min_component R: %d\n", minR);
-    fprintf(f, "min_component G: %d\n", minG);
-    fprintf(f, "min_component B: %d\n", minB);
-
-    fclose(f);
+    FILE *stat_report;
+    stat_report = freopen("report.txt", "w",stdout);
+    max_pixel(source_path);
+    printf("\n");
+ 
+    min_pixel(source_path);
+    printf("\n");
+ 
+    max_component(source_path,'R');
+    printf("\n");
+ 
+    max_component(source_path,'G');
+    printf("\n");
+ 
+    max_component(source_path,'B');
+    printf("\n");
+ 
+    min_component(source_path,'R');
+    printf("\n");
+ 
+    min_component(source_path,'G');
+    printf("\n");
+ 
+    min_component(source_path,'B');
+    printf("\n");
+ 
+    fclose(stat_report);
+ 
+    free_image_data(data);
 }
