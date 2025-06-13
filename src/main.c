@@ -54,15 +54,20 @@ else if ( strncmp( configuration.command, "max_component", 14 ) == 0 ) {
     char component=configuration.arguments[0][0];
     max_component(configuration.filenames[0], component);
 }
-else if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
+else if ( strncmp( configuration.command, "min_component", 14 ) == 0 ) {
     char component=configuration.arguments[0][0];
     min_component(configuration.filenames[0], component);
 }
 
-else if ( strncmp( configuration.command, "stat_report", 11 ) == 0 ) {
+else if ( strncmp( configuration.command, "stat_report", 12 ) == 0 ) {
     stat_report(configuration.filenames[0]);
-  }
+}
+
+else if ( strncmp( configuration.command, "print_pixel", 12 ) == 0 ) {
+    int x = atoi(configuration.arguments[0]);
+    int y = atoi(configuration.arguments[1]);
+    print_pixel(configuration.filenames[0], x, y);
+}
 
   return 0;
 }
-
