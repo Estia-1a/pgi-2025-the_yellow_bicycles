@@ -27,7 +27,7 @@ void first_pixel(char *source_path)
     int width, height, channels;
 
 read_image_data(source_path, &data, &width, &height, &channels);
-        printf("first_pixel: %d,%d,%d", width, height, data[0], data[1], data[2]);
+        printf("first_pixel: %d,%d,%d", data[0], data[1], data[2]);
 
     }
 
@@ -38,7 +38,7 @@ void tenth_pixel(char *source_path)
     int width, height, channels;
 
 read_image_data(source_path, &data, &width, &height, &channels);
-        printf("tenth_pixel: %d,%d,%d", width, height, data[27], data[28], data[29]);
+        printf("tenth_pixel: %d,%d,%d", data[27], data[28], data[29]);
         free_image_data(data);
 }
 
@@ -48,7 +48,7 @@ read_image_data(source_path, &data, &width, &height, &channels);
     unsigned char *data;
     int width, height, channels;
     read_image_data(source_path, &data, &width, &height, &channels);
-    printf("second_line: %d,%d,%d", width, height, data[3*width], data[3*width+1], data[3*width+2]);
+    printf("second_line: %d,%d,%d", data[3*width], data[3*width+1], data[3*width+2]);
     }
 
 
@@ -198,5 +198,29 @@ void max_component(char *source_path, char component){
         }
     }
 }
-printf("max_component %c (%d, %d): %d\n",component, maxx, maxy, maxrgb);
+printf("min_component %c (%d, %d): %d\n",component, maxx, maxy, maxrgb);
+}
+void min_component(char *source_path, char component){
+        unsigned char *data, rgb, minrgb=255;
+    int width, height, channels,minx=0, miny=0, offset;
+    read_image_data(source_path, &data, &width, &height, &channels);
+        if (component == 'R') offset = 0;
+    else if (component == 'G') offset = 1;
+    else if (component == 'B') offset = 2;
+    else {
+        fprintf(stderr, "Invalid component. Use R, G, or B.\n");
+        return;
+    }
+            for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int idx = (y * width + x) * channels;
+        rgb = data[idx+offset];
+        if (rgb<minrgb){
+            minx=x;
+            miny=y;
+            minrgb=rgb;
+        }
+    }
+}
+printf("min_component %c (%d, %d): %d\n",component, minx, miny, minrgb);
 }
