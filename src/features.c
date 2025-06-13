@@ -132,6 +132,31 @@ void max_component(char *source_path, char component){
 printf("max_component %c (%d, %d): %d\n",component, maxx, maxy, maxrgb);
 }
 
+void min_component(char *source_path, char component){
+        unsigned char *data, rgb, minrgb=255;
+    int width, height, channels,minx=0, miny=0, offset;
+    read_image_data(source_path, &data, &width, &height, &channels);
+        if (component == 'R') offset = 0;
+    else if (component == 'G') offset = 1;
+    else if (component == 'B') offset = 2;
+    else {
+        fprintf(stderr, "Invalid component. Use R, G, or B.\n");
+        return;
+    }
+            for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int idx = (y * width + x) * channels;
+        rgb = data[idx+offset];
+        if (rgb<minrgb){
+            minx=x;
+            miny=y;
+            minrgb=rgb;
+        }
+    }
+}
+printf("min_component %c (%d, %d): %d\n",component, minx, miny, minrgb);
+}
+
 
 void stat_report(char *source_path) {
     unsigned char *data;
