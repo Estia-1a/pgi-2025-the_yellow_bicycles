@@ -40,8 +40,6 @@ else if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
 }
 
 else if ( strncmp( configuration.command, "second_line", 12 ) == 0 ) {
-
-if ( strncmp( configuration.command, "second_line", 12 ) == 0 ) {
     second_line(configuration.filenames[0] );
 }
 
@@ -57,6 +55,9 @@ else if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
     max_component(configuration.filenames[0], component);
 }
 
+else if ( strncmp( configuration.command, "stat_report", 11 ) == 0 ) {
+    stat_report(configuration.filenames[0]);
+  }
 
   return 0;
 }
