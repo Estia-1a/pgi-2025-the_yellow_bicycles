@@ -1,0 +1,22 @@
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c: In function ‘first_pixel’:
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c:30:16: warning: too many arguments for format [-Wformat-extra-args]
+   30 |         printf("first_pixel: %d,%d,%d", width, height, data[0], data[1], data[2]);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c: In function ‘tenth_pixel’:
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c:41:16: warning: too many arguments for format [-Wformat-extra-args]
+   41 |         printf("tenth_pixel: %d,%d,%d", width, height, data[27], data[28], data[29]);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c: In function ‘second_line’:
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/features.c:51:12: warning: too many arguments for format [-Wformat-extra-args]
+   51 |     printf("second_line: %d,%d,%d", width, height, data[3*width], data[3*width+1], data[3*width+2]);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_yellow_bicycles/pgi-2025-the_yellow_bicycles/src/main.c:62:1: error: expected declaration or statement at end of input
+   62 | }
+      | ^
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
