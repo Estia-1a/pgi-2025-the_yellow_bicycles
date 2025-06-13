@@ -28,16 +28,31 @@ int main(int argc, char **argv) {
    * If helloworld is a called command: freud.exe -f images/input/image.jpeg -c helloworld 
    */
 
-  if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
+if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
     dimension( configuration.filenames[0] );
 }
 if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
-    /* first_pixel() function is defined in feature.h and implemented in feature.c */
     first_pixel(configuration.filenames[0] );
 }
+  if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
+    tenth_pixel( configuration.filenames[0] );
+}
+
+if ( strncmp( configuration.command, "second_line", 12 ) == 0 ) {
+    second_line(configuration.filenames[0] );
+}
+if ( strncmp( configuration.command, "max_pixel", 13 ) == 0 ) {
+    max_pixel(configuration.filenames[0] );
+}
+if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
+    char component=configuration.arguments[0][0];
+    max_component(configuration.filenames[0], component);
+}
+
   /*
    * TO COMPLETE
    */
   
   return 0;
 }
+
