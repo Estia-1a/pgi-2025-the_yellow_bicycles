@@ -48,14 +48,15 @@ if ( strncmp( configuration.command, "second_line", 12 ) == 0 ) {
 else if ( strncmp( configuration.command, "max_pixel", 13 ) == 0 ) {
     max_pixel(configuration.filenames[0] );
 }
-if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
+else if ( strncmp( configuration.command, "min_pixel", 14 ) == 0 ) {
+    min_pixel(configuration.filenames[0] );
+}
+
+else if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
     char component=configuration.arguments[0][0];
     max_component(configuration.filenames[0], component);
 }
 
-else if ( strncmp( configuration.command, "min_pixel", 14 ) == 0 ) {
-    min_pixel(configuration.filenames[0] );
-}
 
   return 0;
 }
