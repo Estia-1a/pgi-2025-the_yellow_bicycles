@@ -75,3 +75,27 @@ void max_pixel(char *source_path){
 }
     printf("max_pixel (%d, %d): %d, %d, %d\n", maxx, maxy, maxr, maxg, maxb);
 }
+void max_component(char *source_path, char component){
+        unsigned char *data, rgb, maxrgb=0;
+    int width, height, channels,maxx=0, maxy=0, offset;
+    read_image_data(source_path, &data, &width, &height, &channels);
+        if (component == 'R') offset = 0;
+    else if (component == 'G') offset = 1;
+    else if (component == 'B') offset = 2;
+    else {
+        fprintf(stderr, "Invalid component. Use R, G, or B.\n");
+        return;
+    }
+            for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int idx = (y * width + x) * channels;
+        rgb = data[idx+offset];
+        if (rgb>maxrgb){
+            maxx=x;
+            maxy=y;
+            maxrgb=rgb;
+        }
+    }
+}
+printf("max_component %c (%d, %d): %d\n",component, maxx, maxy, maxrgb);
+}
