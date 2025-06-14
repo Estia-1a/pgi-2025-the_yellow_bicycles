@@ -247,3 +247,18 @@ void color_gray(char *source_path) {
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
 }
+
+void invert(char *source_path) {
+    unsigned char *data;
+    int width, height, channels;
+    read_image_data(source_path, &data, &width, &height, &channels);
+
+    for (int i = 0; i<width * height * channels; i += channels) {
+        data[i + 0] = 255 - data[i + 0];
+        data[i + 1] = 255 - data[i + 1];
+        data[i + 2] = 255 - data[i + 2];
+
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);
+}
