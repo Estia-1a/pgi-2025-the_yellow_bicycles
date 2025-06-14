@@ -71,7 +71,11 @@ else if ( strncmp( configuration.command, "print_pixel", 12 ) == 0 ) {
 
 else if ( strncmp( configuration.command, "color_green", 11) == 0) {
         color_green(configuration.filenames[0]);
-    }
+}
+
+else if ( strncmp( configuration.command, "color_red", 9) == 0) {
+    color_red(configuration.filenames[0]);
+}
 
   return 0;
 }
