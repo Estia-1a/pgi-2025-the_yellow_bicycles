@@ -227,3 +227,23 @@ void color_blue(char *source_path) {
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
 }
+
+void color_gray(char *source_path) {
+    unsigned char *data;
+    int width, height, channels;
+    read_image_data(source_path, &data, &width, &height, &channels);
+
+    for (int i = 0; i<width * height * channels; i += channels) {
+        unsigned char R = data[i + 0];
+        unsigned char G = data[i + 1];
+        unsigned char B = data[i + 2];
+
+        unsigned char Gray = (R + G + B) / 3;
+        data[i + 0] = Gray;
+        data[i + 1] = Gray;
+        data[i + 2] = Gray;
+
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);
+}
