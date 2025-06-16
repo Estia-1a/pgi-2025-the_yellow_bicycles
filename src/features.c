@@ -248,7 +248,7 @@ void color_gray(char *source_path) {
     free_image_data(data);
 }
 
-void invert(char *source_path) {
+void color_invert(char *source_path) {
     unsigned char *data;
     int width, height, channels;
     read_image_data(source_path, &data, &width, &height, &channels);
