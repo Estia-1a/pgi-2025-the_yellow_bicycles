@@ -98,5 +98,8 @@ else if ( strncmp( configuration.command, "rotate_cw", 9) == 0) {
 else if ( strncmp( configuration.command, "rotate_acw", 10) == 0) {
     rotate_acw(configuration.filenames[0]);
 }
+else if ( strncmp( configuration.command, "mirror_horizontal", 17) == 0) {
+    mirror_horizontal(configuration.filenames[0]);
+}
   return 0;
 }
