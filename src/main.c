@@ -92,6 +92,9 @@ else if ( strncmp( configuration.command, "color_invert", 6) == 0) {
 else if ( strncmp( configuration.command, "color_gray_luminance", 21) == 0) {
     color_gray_luminance(configuration.filenames[0]);
 }
+else if ( strncmp( configuration.command, "rotate_cw", 9) == 0) {
+    rotate_cw(configuration.filenames[0]);
+}
 
   return 0;
 }
