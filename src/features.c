@@ -273,7 +273,7 @@ void color_gray_luminance(char *source_path) {
         unsigned char G = data[i + 1];
         unsigned char B = data[i + 2];
 
-        unsigned char gray_luminance = (unsigned char)(R*0.21 + G*0.72 + B*0.07);
+        float gray_luminance = (float)(R*0.21f + G*0.72f + B*0.07f);
         data[i + 0] = gray_luminance;
         data[i + 1] = gray_luminance;
         data[i + 2] = gray_luminance;

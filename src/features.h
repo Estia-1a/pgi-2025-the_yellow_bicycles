@@ -13,7 +13,6 @@ void max_pixel(char *source_path);
 void min_pixel(char *source_path);
 void max_component(char *source_path, char component);
 void min_component(char *source_path, char component);
-
 void stat_report(char *source_path);
 void color_green(char *source_path);
 void color_red(char *source_path);
