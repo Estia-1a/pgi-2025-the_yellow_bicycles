@@ -104,5 +104,11 @@ else if ( strncmp( configuration.command, "mirror_horizontal", 17) == 0) {
 else if ( strncmp( configuration.command, "mirror_vertical", 15) == 0) {
     mirror_vertical(configuration.filenames[0]);
 }
-  return 0;
+else if ( strncmp( configuration.command, "scale_crop", 10) == 0) {
+    int center_x = atoi(argv[5]);
+    int center_y = atoi(argv[6]);
+    int crop_width = atoi(argv[7]);
+    int crop_height = atoi(argv[8]);
+    scale_crop(configuration.filenames[0], center_x, center_y, crop_width, crop_height);
+}
 }
