@@ -320,7 +320,7 @@ void rotate_acw(char *source_path) {
             for (int c = 0; c < channels; c++) {
                 int src_index = (y * width + x) * channels + c;
                 int dest_x = y;
-                int dest_y = height - 1 - x;
+                int dest_y = width - 1 - x;
                 int dest_index = (dest_y * new_width + dest_x) * channels + c;
                 rotated[dest_index] = data[src_index];
             }
