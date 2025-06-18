@@ -374,3 +374,28 @@ void mirror_vertical(char *source_path) {
     free_image_data(data);
     free(mirrored);
 }
+void scale_crop(const char *source_path, int center_x, int center_y, int crop_width, int crop_height){
+    unsigned char *data;
+    int width, height, channels;
+    read_image_data(source_path, &data, &width, &height, &channels);
+    unsigned char *cropped = calloc(crop_width * crop_height * channels, 1);
+
+    int start_x = center_x - crop_width/2;
+    int start_y = center_y - crop_height/2;
+     for (int y = 0; y < crop_height; y++) {
+        for (int x = 0; x < crop_width; x++) {
+            int src_x = start_x + x;
+            int src_y = start_y + y;
+            if(src_x>0 && src_x<width && src_y>0 && src_y<width){
+                for (int c = 0; c < channels; c++){
+                int src_index = (src_y * width + src_x) * channels + c;
+                int dest_index = (y * crop_width + x) * channels + c;
+                cropped[dest_index] = data[src_index];
+                }
+            }
+        }
+    }
+        write_image_data("image_out.bmp", cropped, crop_width, crop_height);
+    free_image_data(data);
+    free(cropped);
+}
