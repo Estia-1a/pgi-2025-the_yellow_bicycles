@@ -132,4 +132,10 @@ else if (strncmp(configuration.command, "scale_bilinear", 14) == 0) {
     float scale = atof(argv[5]);
     scale_bilinear(configuration.filenames[0], scale);
 }
+
+else if ( strncmp( configuration.command, "color_desaturate", 17) == 0) {
+    color_desaturate(configuration.filenames[0]);
+}
+
+return 0;
 }

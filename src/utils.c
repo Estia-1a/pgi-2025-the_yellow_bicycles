@@ -26,4 +26,3 @@ void print_pixel(char *source_path, int x, int y)
     printf("print_pixel (%d,%d): %d, %d, %d", x, y, pixel->R, pixel->G, pixel->B);
     free_image_data(data);
 }
-
