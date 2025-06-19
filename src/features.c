@@ -399,3 +399,25 @@ void scale_crop(const char *source_path, int center_x, int center_y, int crop_wi
     free_image_data(data);
     free(cropped);
 }
+
+void mirror_total(char *source_path) {
+    unsigned char *data;
+    int width, height, channels;
+    read_image_data(source_path, &data, &width, &height, &channels);
+    unsigned char *mirrored = malloc(width * height * channels);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            for (int c = 0; c < channels; c++) {
+                int src_index = (y * width + x) * channels + c;
+                int dest_x = width - x - 1;
+                int dest_y = height - 1 - y;
+                int dest_index = (dest_y * width + dest_x) * channels + c;
+                mirrored[dest_index] = data[src_index];
+            }
+        }
+    }
+ 
+    write_image_data("image_out.bmp", mirrored, width, height);
+    free_image_data(data);
+    free(mirrored);
+}
