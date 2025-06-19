@@ -111,4 +111,11 @@ else if ( strncmp( configuration.command, "scale_crop", 10) == 0) {
     int crop_height = atoi(argv[8]);
     scale_crop(configuration.filenames[0], center_x, center_y, crop_width, crop_height);
 }
+
+else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
+    /* first_pixel() function is defined in feature.h and implemented in feature.c */
+    int x = atoi(configuration.arguments[0]);
+    int y = atoi(configuration.arguments[1]);
+    print_pixel(configuration.filenames[0], x, y);
+}
 }
