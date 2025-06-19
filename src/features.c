@@ -493,19 +493,15 @@ void color_desaturate(char *source_path){
     int width, height, channels;
     unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &channels);
-
     for (int i = 0; i < width * height * channels; i += channels){
         int r = data[i];
         int g = data[i + 1];
         int b = data[i + 2];
-
         int gray = (max_pix(r, g, b) + min_pix(r, g, b)) / 2;
-
         data[i] = gray;
         data[i + 1] = gray;
         data[i + 2] = gray;
     }
-
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
 }
