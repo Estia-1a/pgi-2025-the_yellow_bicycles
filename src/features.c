@@ -449,3 +449,47 @@ void scale_nearest(const char *source_path, float scale){
     free(scaled);
    
 }
+
+void scale_bilinear (const char *source_path, float scale){
+    unsigned char *data;
+    int width, height, channels;
+    read_image_data(source_path, &data, &width, &height, &channels);
+    int scaled_width = (width * scale);
+    int scaled_height = (height * scale);
+    unsigned char *scaled = malloc(scaled_width * scaled_height * channels);
+         for (int y = 0; y < scaled_height; y++) {
+        for (int x = 0; x < scaled_width; x++) {
+        float src_x = x / scale;
+        float src_y = y / scale;
+         int x0 = (int)src_x;
+            int y0 = (int)src_y;
+            int x1 = x0 + 1;
+            int y1 = y0 + 1;
+ 
+ 
+            if (x1 >= width) x1 = width - 1;
+            if (y1 >= height) y1 = height - 1;
+ 
+            float dx = src_x - x0;
+            float dy = src_y - y0;
+ 
+            for (int c = 0; c < channels; c++) {
+ 
+                int i00 = (y0 * width + x0) * channels + c;
+                int i01 = (y0 * width + x1) * channels + c;
+                int i10 = (y1 * width + x0) * channels + c;
+                int i11 = (y1 * width + x1) * channels + c;
+ 
+                float val = (1 - dx) * (1 - dy) * data[i00] + dx * (1 - dy) * data[i01] + (1 - dx) * dy * data[i10] + dx * dy * data[i11];
+                int dest_index = (y * scaled_width + x) * channels + c;
+                scaled[dest_index] = (unsigned char)(val);
+            }
+        }
+    }
+ 
+    write_image_data("image_out.bmp", scaled, scaled_width, scaled_height);
+    printf("Image d’origine : %d x %d\n", width, height);
+    printf("Image redimensionnée : %d x %d\n", scaled_width, scaled_height);
+    free_image_data(data);
+    free(scaled);
+}
