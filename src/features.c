@@ -421,3 +421,31 @@ void mirror_total(char *source_path) {
     free_image_data(data);
     free(mirrored);
 }
+
+void scale_nearest(const char *source_path, float scale){
+    unsigned char *data;
+    int width, height, channels;
+    read_image_data(source_path, &data, &width, &height, &channels);
+    int scaled_width = (width * scale);
+    int scaled_height = (height * scale);
+    unsigned char *scaled = malloc(scaled_width * scaled_height * channels);
+         for (int y = 0; y < scaled_height; y++) {
+        for (int x = 0; x < scaled_width; x++) {
+                int src_x = (int)(x / scale);
+                int src_y = (int)(y / scale);
+                if (src_x >= width) src_x=width - 1;
+                if (src_y >= height) src_y=height - 1;
+                for (int c = 0; c < channels; c++){
+                int src_index = (src_y * width + src_x) * channels + c;
+                int dest_index = (y * scaled_width + x) * channels + c;
+                scaled[dest_index] = data[src_index];
+            }
+        }
+    }
+    write_image_data("image_out.bmp", scaled, scaled_width, scaled_height);
+    printf("Image d’origine : %d x %d\n", width, height);
+    printf("Image redimensionnée : %d x %d\n", scaled_width, scaled_height);
+    free_image_data(data);
+    free(scaled);
+   
+}

@@ -118,4 +118,13 @@ else if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
     int y = atoi(configuration.arguments[1]);
     print_pixel(configuration.filenames[0], x, y);
 }
+
+else if ( strncmp( configuration.command, "mirror_total", 12) == 0) {
+    mirror_total(configuration.filenames[0]);
+}
+
+else if (strncmp(configuration.command, "scale_nearest", 13) == 0) {
+        float scale = atof(argv[5]);
+        scale_nearest(configuration.filenames[0], scale);
+}
 }
